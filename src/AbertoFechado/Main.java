@@ -9,7 +9,8 @@ public class Main {
         Imposto impostoRJ = new ImpostoRJ();
 
         // Sem alterar a classe imposto, estamos criando variações do imposto.
-        // Esse é o princípio de aberto para extensão e fechado para mudança.
+        // Esse é o princípio de aberto para extensão e fechado para mudanças.
+        // Isso facilita a criação de novos requisitos e melhora a manutenibilidade.
 
         System.out.println("Valor: " + valor);
         System.out.println("Imposto: " + imposto.calcularImposto(valor));
