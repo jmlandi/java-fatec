@@ -1,28 +1,27 @@
 package Interfaces;
 
-public class MarcaoTech implements Financeira {
+public class MarcaoTech extends FinanceiraPadrao implements Financeira, Financiamento {
 
     @Override
-    public void depositar(Conta conta, Double valor) {
-        if (valor <= 0.0) {
-            System.err.println("\n[DEPOSITO][ERRO] Valor de depósito inválido");
-            return;
-        };
-        System.out.println("\n[DEPOSITO] Iniciando deposito de " + valor);
-        System.out.println("[DEPOSITO] Valor anterior: " + conta.getSaldo());
-        conta.alterarSaldo(valor);
-        System.out.println("[DEPOSITO] Valor atual: " + conta.getSaldo());
+    public void liberarCredito(Conta conta) {
+        conta.setValorFinanciamentoLiberado(conta.getSaldo() * 4.0);
     }
 
     @Override
-    public void sacar(Conta conta, Double valor) {
-        if (conta.getSaldo() < valor) {
-            System.err.println("\n[SAQUE][ERRO] Valor de saque inválido");
-            return;
-        };
-        System.out.println("\n[SAQUE] Iniciando saque de " + valor);
-        System.out.println("[SAQUE] Valor anterior: " + conta.getSaldo());
-        conta.alterarSaldo(-valor);
-        System.out.println("[SAQUE] Valor atual: " + conta.getSaldo());
+    public void pagarFinanciamento(Conta conta, Double valor) {
+        System.out.println("\n[FINANCIADO] valor de emprestado: " + valor);
+        System.out.println("[FINANCIADO] Valor anterior: " + conta.getValorFinanciado());
+        conta.alterarValorFinanciado(-valor);
+        System.out.println("[FINANCIADO] Valor atual: " + conta.getValorFinanciado());
+    }
+
+    @Override
+    public void adicionarJurosFinanciamento(Conta conta) {
+        Double valorDeJuros = conta.getValorFinanciado() * 0.015;
+
+        System.out.println("\n[FINANCIADO] valor de emprestado: " + conta.getValorFinanciado());
+        System.out.println("[FINANCIADO] Valor anterior: " + conta.getValorFinanciado());
+        conta.alterarValorFinanciado(valorDeJuros);
+        System.out.println("[FINANCIADO] Valor atual: " + conta.getValorFinanciado());
     }
 }

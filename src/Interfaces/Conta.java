@@ -5,6 +5,8 @@ public class Conta {
     private String cliente;
     private Integer numero;
     private Double saldo;
+    private Double valorFinanciamentoLiberado;
+    private Double valorFinanciado;
 
     public Conta(String cliente, Integer numero) {
         this.cliente = cliente;
@@ -26,5 +28,21 @@ public class Conta {
 
     public Double getSaldo() {
         return saldo;
+    }
+
+    public Double getValorFinanciamentoLiberado() {
+        return valorFinanciamentoLiberado;
+    }
+
+    public void setValorFinanciamentoLiberado(Double valorFinanciamentoLiberado) {
+        this.valorFinanciamentoLiberado = valorFinanciamentoLiberado;
+    }
+
+    public Double getValorFinanciado() {
+        return valorFinanciado;
+    }
+
+    public Double alterarValorFinanciado(Double valor) {
+        return this.valorFinanciado += valor;
     }
 }
